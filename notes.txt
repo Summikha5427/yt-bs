@@ -1,0 +1,337 @@
+--FreeCodeCampus
+
+Steps for follow up:
+
+------------------Create folders
+- create a folder at the required location with self named
+- Inside the folder create front and backend folder.
+
+- FRONTEND FOLDER:
+
+  create two files in the front-end Folder
+  - .gitignore for the github
+  - README.md for "serves as documentation for a project, providing information about its purpose, 
+  usage, and any other relevant details."
+
+------------------------------BACKEND FOLDER: --- installation
+
+--Start the NODE.js project in the backend folderby 
+ --"npm init -y "on the terminal in the backend folder..
+
+  The `npm init -y` command is a shortcut for initializing a new Node.js project with default values without having to answer interactive prompts. When you run `npm init -y`, it automatically generates a `package.json` file with default values.
+
+  Here's what each part of the command does:
+
+- `npm`: The Node Package Manager.
+- `init`: A command to initialize a new Node.js project.
+- `-y`: Short for "yes." It tells npm to use default values for all the prompts, effectively skipping the interactive setup process.
+
+When you run `npm init -y`, npm creates a `package.json` file with default settings. The `package.json` file is a metadata file for your project that includes information such as project name, version, description, entry point, test command, repository, keywords, author, and license.
+
+Here's an example of what the generated `package.json` might look like:
+
+```json  
+{
+  "name": "your-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+You can then modify the `package.json` file to suit your project's specific needs by editing the values within the file.
+
+---package.json  ----------------setup the requirements
+
+below the description type =>
+  "type" : "module",  => a line that indicates or helps us use the ES syntax 
+  which helps us in usinf "Import" && "Export" keywords and also add 2 packets to our 
+  project =>* express.js - (Web Application frameWork for NOde.js - A frameworks that helps in building Web apps and APIS for web and mobile apps) 
+            * nodemon - (Nodemon is a utility for Node.js applications that monitors for changes in your source code and automatically 
+              restarts the server when changes are detected. It is particularly useful during the development phase as it saves you the manual
+              effort of stopping and restarting the server every time you make changes to your code.)
+
+ by writting in terminal :
+              => npm i express nodemon
+
+------------index.js( in the backendend folder - the starter): starting the server
+
+--Setup the port (a number to start the server on) in "config.js"
+  export it in the main file " index.js" 
+
+--listen is the method from the express - listens to the request made
+  and start the server at the Port defined
+
+ express variable.listen(PORTNUMBER, Callback FUnction)
+        =>if we see a print on the console or anywhere defined then your server is ready 
+          and there is no problem till now
+
+Now we have a basic server - server language is JAVASCRIPt
+                             which uses express.js as a backemd framework and
+                             we can run this server on any machine with node.js 
+                             environment.
+
+      now on any machine where node.js is installed this server can be used 
+      use npm from Dev to run the server "nodemon" 
+
+      ==> npm run dev 
+            where dev is "nodemon index.js"
+
+ -----------------------
+
+ express.get() (Express.js):
+
+  express.get() is a method provided by the Express.js framework,
+  which is commonly used for building web applications and APIs in Node.js.
+I t is specifically used to define a route for handling HTTP GET requests on a particular URL path.
+
+
+axios.get() (Axios):
+
+axios.get() is a method provided by the Axios library,
+ and it is used for making HTTP GET requests from the client side (e.g., in a web browser or Node.js 
+ environment). Axios is a promise-based HTTP client that simplifies the process of making HTTP requests.
+
+-------------HTTP route:
+
+  for each URL(PORT) we need to have HTTP route 
+    the default HTTP Route of the server is :
+     "/".
+
+  if we run the server withuot the http route 
+  we get an error of "Cannot get /" =>404 , page not found and Get is the method
+
+using express to create a http route (using "get()") for the server in the main file.
+      => app.get(path, callback)
+
+           [callback =>  " (request,response) => {return response.send()} " ]
+
+
+
+-------------------------DATABASE: Add MongoDB and mongoose to node.js (an onlinde DB)
+  
+free online DB => mongodb.com
+
+to have a mongodb in our project first create a free db onlinde as a new indiviual project with a free cluster 
+and name for your db . create username and password, keep the password secure
+
+use the link provided by the mongoose and export it in your confiig file
+set the password in the link after the username and give a collection name within the link.
+
+import the link with in the main file (index.js) as a instance
+
+install the mongoose library through terminal in the backend
+Everything and firstly backend should be setup before working for the ffrontend
+
+   => npm i mongoose  
+
+create a try and catch block to make sure we have 
+set an error handling situation for connection success and failure
+
+-In the main file 
+
+    =>  mongoose
+         .connect(monDBURL)
+         .then((port connectedion)=>{console.log("connected)})
+         .catch((error)=>{console.log(error)})
+
+
+-----------------------------------createing a Book Model with mongoose
+
+---Mongoosejs.com
+Mongoose is tool thatt helps in monitoring mongodb library (object data library).
+
+      =>eg: we need a model for a 'cat' instance in our db
+              Now this 'cat' should have a 'schema' => 'name' and 'type' to interact with the DATABASE
+
+
+seperate the model folder for our model structure of our project in the backend folder
+
+-In the model file
+  mongoose.model('name',ModelsSchema);
+   =>  mongoose.model('Modelname', schemaName);
+
+  mongoose.schema({name:{type: , requied:}});
+
+        eg: mongoose.Schema({
+              title:{},
+              author:{},
+              publishYear:{}
+            });
+
+Models for the book and its schema is structured. 
+Node project is setup 
+express frame work is set up 
+nodemon is used to monitor the continous development of the node project
+port and a route is set up 
+free data base Mongoodb is set up 
+a tool mongoose used to maange or monitor the  mongo db 
+
+-----Now save a new book using mongoose.
+
+  First create a route to save, get, getall , getbyid etc.....
+
+  create routes for different task 
+
+      express.post(path,callbackfucntion)
+    use postman
+
+---------Get all the books with mongoose
+
+set up the routes, create sepreate folder in the backend
+check for the middleware
+we can set up middle ware using "express.use()....
+
+allhamduliallh done 
+
+---------------------------CORS POLICY in Express and Node.js:
+
+One of the most important topic in web Development 
+
+a tools in the browser to give the security when the browser request another domain .
+server can check the headers and either reject or accept the request and provide the response.
+
+first install CORS
+    => npm i CORS
+
+
+    Axios is a popular JavaScript library used for making HTTP requests from a web browser or Node.js.
+     It is a promise-based library that provides a simple and clean way to interact with web servers.
+      Axios can be used to perform various HTTP methods, such as GET, POST, PUT, DELETE, and more.
+      Here's a basic example of how you might use A
+
+-----------------------------How is  node.js and express.js related to javascript
+
+Relationship:
+
+Node.js enables the execution of JavaScript code on the server,
+ while Express.js is a framework that runs on top of Node.js, providing a set of tools and conventions for building web applications.
+Many web developers use Node.js as the runtime environment and Express.js 
+as the web application framework to build server-side logic for their applications.
+Express.js applications are built on top of Node.js, leveraging its capabilities 
+for handling I/O operations and managing asynchronous events.
+
+
+-------------Vite
+
+
+Vite is a build tool for modern web development that aims to provide a 
+faster and more efficient development experience. It was created by Evan You,
+the same person who developed Vue.js. Vite is specifically designed to work well 
+with Vue.js, although it can also be used for building applications with other
+frontend frameworks or libraries.
+
+
+ To use Vite, you typically create a project using the Vite project 
+ generator or configure it manually, and then you can take advantage of 
+ its development server, optimized builds, and other features to streamline your 
+ frontend development workflow. 
+
+ ------------------------------FRONT end
+
+ using Vite instead of CRA for faster and easy development
+
+    Being in the mainfolder of the application
+
+        => npm create vite@latest 
+           frontend - (as project name or as needed)
+           React
+           JavaScript
+ Front end folder is ready with javascript language and react as the development
+ open the front end folder and and install the package manger in it 
+      => npm i 
+
+setup tailwind accorig to vite tailwind docs
+
+Can check by simply ruung the APP.jsx 
+  => npm run dev
+
+-------------SPA and Add React router dom 
+
+Single page Application - interacts with the user by dynamically rewriting the
+                          current-page rather than loading entire new page
+                          from teh server
+
+In SPAs, the initial HTML, CSS, and JavaScript are loaded once, 
+and subsequent interactions with the application are handled through asynchronous 
+communication with the server, typically using AJAX (Asynchronous JavaScript and XML)
+or newer technologies like Fetch.
+
+---Now we have REact Project - we want to have a SPA etc.
+
+Open the new terminal , frontend folder
+
+        =>npm i react router-dom 
+        //A library for Routers in react
+             react-router simplifies the process of managing navigation and routing in SPAs,
+             making it easier to create a structured and organized user interface.
+             It enables developers to define routes, handle navigation, and seamlessly 
+             integrate with React components in a declarative and component-based manner.
+
+Set the Browser route in the main.jsx file with the <App> inside the BrowserRouter
+    save it
+
+Now in the  App.jsx file 
+
+  Create different componentsfor our app import them in the App.jsx
+  Comtinue Buildeing...
+  If anything important I ill keep updating for future refrences..
+
+
+===> instal axios react-icons
+  
+  run backend and frontend on the different terminals and use.cors but dont use the cors routes.
+   uncomment it as our Api route is different
+
+run both the ends using 
+  =>npm run dev
+
+  ===>Start Building 
+
+Creating Components folder in the frontend and files accordingly
+
+Axios:
+
+Purpose: Axios is a JavaScript library used for making HTTP requests. 
+It simplifies the process of sending asynchronous requests to a server and handling 
+the responses
+Usage: You use Axios when you need to send
+HTTP requests (GET, POST, PUT, DELETE, etc.)
+
+React Router DOM:
+
+Purpose: React Router DOM is a library for handling navigation and routing 
+in React applications. It enables the creation of single-page applications 
+with multiple views and allows you to navigate between these views without
+ causing a full page reload.
+
+Usage: You use React Router DOM when you want to implement client-side 
+routing in your React application. It provides components like BrowserRouter,
+Route, Link, etc., which allow you to define routes and navigate between them 
+without triggering a server request.
+
+
+
+-------useParams
+
+  ->In React, useParams is a hook provided by the React Router library,
+   specifically designed for functional components. 
+   It allows you to access the parameters from the current route in your component.
+
+----Check EditBooks for better understanding as there is two APIS used and two fucntionalities together
+
+CURD operations are completed, Only one error the CreateBook and EditBooks doesnt go back to home page bcz of axios error
+
+
+-----Show BookList as cards
+----Manage Book Card a single component 
+---Createa card model
+----Improve UX user expersience with beautifull alert '
+        =>npm  i notiStack  -- in the front end folder(refer notes) 
+
+  
